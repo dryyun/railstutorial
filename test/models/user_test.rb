@@ -8,7 +8,6 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "should be valid" do
-    p @user
     assert @user.valid?
   end
 
@@ -54,8 +53,6 @@ class UserTest < ActiveSupport::TestCase
     duplicate_user = @user.dup
     duplicate_user.email = @user.email.upcase
     @user.save
-    p @user
-    p duplicate_user
     assert_not duplicate_user.valid?
   end
 
