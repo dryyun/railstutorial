@@ -17,7 +17,22 @@ class UsersController < ApplicationController
     else
       render 'new'
     end
+  end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(user_params)
+      flash[:success] = "Profile updated"
+      redirect_to @user
+      # 更新成功
+    else
+      # 更新失败情况处理
+      render 'edit'
+    end
   end
 
   private
